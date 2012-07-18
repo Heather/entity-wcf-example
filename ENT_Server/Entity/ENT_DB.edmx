@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ENTModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="ENTModelStoreContainer">
+          <EntitySet Name="Cash" EntityType="ENTModel.Store.Cash" store:Type="Tables" store:Schema="dbo" store:Name="Cash">
+            <DefiningQuery>SELECT 
+      [Cash].[Id] AS [Id], 
+      [Cash].[Id_good] AS [Id_good], 
+      [Cash].[Id_cashheading] AS [Id_cashheading]
+      FROM [dbo].[Cash] AS [Cash]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="CashHeading" EntityType="ENTModel.Store.CashHeading" store:Type="Tables" store:Schema="dbo" store:Name="CashHeading">
+            <DefiningQuery>SELECT 
+      [CashHeading].[Id] AS [Id], 
+      [CashHeading].[Id_customer] AS [Id_customer], 
+      [CashHeading].[Id_shop] AS [Id_shop], 
+      [CashHeading].[Date] AS [Date]
+      FROM [dbo].[CashHeading] AS [CashHeading]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Customer" EntityType="ENTModel.Store.Customer" store:Type="Tables" store:Schema="dbo" store:Name="Customer">
+            <DefiningQuery>SELECT 
+      [Customer].[Id] AS [Id], 
+      [Customer].[Name] AS [Name]
+      FROM [dbo].[Customer] AS [Customer]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Good" EntityType="ENTModel.Store.Good" store:Type="Tables" store:Schema="dbo" store:Name="Good">
+            <DefiningQuery>SELECT 
+      [Good].[Id] AS [Id], 
+      [Good].[Article] AS [Article], 
+      [Good].[Material] AS [Material], 
+      [Good].[Color] AS [Color], 
+      [Good].[Price] AS [Price]
+      FROM [dbo].[Good] AS [Good]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Shop" EntityType="ENTModel.Store.Shop" store:Type="Tables" store:Schema="dbo" store:Name="Shop">
+            <DefiningQuery>SELECT 
+      [Shop].[Id] AS [Id], 
+      [Shop].[Shop] AS [Shop], 
+      [Shop].[Address] AS [Address]
+      FROM [dbo].[Shop] AS [Shop]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'ENT.dbo.Cash' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="Cash">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Id_good" />
+            <PropertyRef Name="Id_cashheading" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id_good" Type="int" Nullable="false" />
+          <Property Name="Id_cashheading" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'ENT.dbo.CashHeading' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="CashHeading">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Id_customer" />
+            <PropertyRef Name="Id_shop" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id_customer" Type="int" Nullable="false" />
+          <Property Name="Id_shop" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'ENT.dbo.Customer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'ENT.dbo.Good' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="Good">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Article" Type="nvarchar(max)" />
+          <Property Name="Material" Type="nvarchar(max)" />
+          <Property Name="Color" Type="nvarchar(max)" />
+          <Property Name="Price" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'ENT.dbo.Shop' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="Shop">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Shop" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar(max)" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ENTModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="ENTEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cash" EntityType="ENTModel.Cash" />
+          <EntitySet Name="CashHeading" EntityType="ENTModel.CashHeading" />
+          <EntitySet Name="Customer" EntityType="ENTModel.Customer" />
+          <EntitySet Name="Good" EntityType="ENTModel.Good" />
+          <EntitySet Name="Shop" EntityType="ENTModel.Shop" />
+        </EntityContainer>
+        <EntityType Name="Cash">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Id_good" />
+            <PropertyRef Name="Id_cashheading" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id_good" Type="Int32" Nullable="false" />
+          <Property Name="Id_cashheading" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CashHeading">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Id_customer" />
+            <PropertyRef Name="Id_shop" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Id_customer" Type="Int32" Nullable="false" />
+          <Property Name="Id_shop" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" Unicode="true" FixedLength="true" />
+        </EntityType>
+        <EntityType Name="Good">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Article" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Material" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Color" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Price" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Shop">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Shop1" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Address" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ENTModelStoreContainer" CdmEntityContainer="ENTEntities">
+          <EntitySetMapping Name="Cash">
+            <EntityTypeMapping TypeName="ENTModel.Cash">
+              <MappingFragment StoreEntitySet="Cash">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_good" ColumnName="Id_good" />
+                <ScalarProperty Name="Id_cashheading" ColumnName="Id_cashheading" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CashHeading">
+            <EntityTypeMapping TypeName="ENTModel.CashHeading">
+              <MappingFragment StoreEntitySet="CashHeading">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Id_customer" ColumnName="Id_customer" />
+                <ScalarProperty Name="Id_shop" ColumnName="Id_shop" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customer">
+            <EntityTypeMapping TypeName="ENTModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Good">
+            <EntityTypeMapping TypeName="ENTModel.Good">
+              <MappingFragment StoreEntitySet="Good">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Article" ColumnName="Article" />
+                <ScalarProperty Name="Material" ColumnName="Material" />
+                <ScalarProperty Name="Color" ColumnName="Color" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shop">
+            <EntityTypeMapping TypeName="ENTModel.Shop">
+              <MappingFragment StoreEntitySet="Shop">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Shop1" ColumnName="Shop" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="ENT_DB">
+        <EntityTypeShape EntityType="ENTModel.Cash" Width="1.5" PointX="0.75" PointY="0.75" Height="1.59568359375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ENTModel.CashHeading" Width="1.5" PointX="2.75" PointY="0.75" Height="1.7879850260416674" IsExpanded="true" />
+        <EntityTypeShape EntityType="ENTModel.Customer" Width="1.5" PointX="0.75" PointY="2.875" Height="1.4033821614583322" IsExpanded="true" />
+        <EntityTypeShape EntityType="ENTModel.Good" Width="1.5" PointX="4.75" PointY="2.75" Height="1.9802864583333335" IsExpanded="true" />
+        <EntityTypeShape EntityType="ENTModel.Shop" Width="1.5" PointX="4.75" PointY="0.75" Height="1.5956835937499996" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
