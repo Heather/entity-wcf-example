@@ -10,3 +10,5 @@ TestResults
 
 #misc VS files
 *.suo
+*.testsettings
+*.vsmdi
