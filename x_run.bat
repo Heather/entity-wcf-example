@@ -1,2 +1,2 @@
-start .\ENT_Server\bin\Debug\ENT_Server.exe
-start .\ENT_Client\bin\Debug\ENT_Client.exe
+start .\ENT_Server\bin\Release\ENT_Server.exe
+start .\ENT_Client\bin\Release\ENT_Client.exe
