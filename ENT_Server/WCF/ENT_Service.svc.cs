@@ -9,7 +9,7 @@ using System.Data.Services.Common;
 using ENT_Server.Entity;
 
 namespace ENT_Server.WCF {
-    public class WcfDataService1 : DataService<ENTEntities> {
+    public class ENT_Service : DataService<ENTEntities> {
         public static void InitializeService(DataServiceConfiguration config) {
             config.SetEntitySetAccessRule("Good", EntitySetRights.AllRead
                  | EntitySetRights.WriteMerge

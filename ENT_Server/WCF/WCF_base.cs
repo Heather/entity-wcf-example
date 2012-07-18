@@ -15,10 +15,10 @@ namespace ENT_Server.WCF {
             /// Create the ServiceHost.
             using (ServiceHost host = new ServiceHost(typeof(ENT), baseAddress)) {
                 /// Enable metadata publishing.
-                ServiceMetadataBehavior smb = new ServiceMetadataBehavior();
+                /*ServiceMetadataBehavior smb = new ServiceMetadataBehavior();
                 smb.HttpGetEnabled = true;
                 smb.MetadataExporter.PolicyVersion = PolicyVersion.Policy15;
-                host.Description.Behaviors.Add(smb);
+                host.Description.Behaviors.Add(smb);*/
 
                 ///<Summary>
                 /// Open the ServiceHost to start listening for messages. Since
@@ -30,7 +30,6 @@ namespace ENT_Server.WCF {
                 Console.WriteLine("The service is ready at {0}", baseAddress);
                 Console.WriteLine("Press <Enter> to stop the service.");
                 Console.ReadLine();
-                /// Close the ServiceHost.
                 host.Close();
                 }
             }
