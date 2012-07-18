@@ -7,3 +7,6 @@ db
 
 # mstest test results
 TestResults
+
+#misc VS files
+.suo
