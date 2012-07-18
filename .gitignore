@@ -2,5 +2,8 @@
 bin
 obj
 
+#MS SQL db is here
+db
+
 # mstest test results
 TestResults
