@@ -10,7 +10,7 @@ using ENT_Interface;
 
 namespace ENT_Server.WCF {
     class WCF_base {
-        public Uri baseAddress { get; private set; }
+        private Uri baseAddress;
         private void createHost() {
             /// Create the ServiceHost.
             using (ServiceHost host = new ServiceHost(typeof(ENT), baseAddress)) {

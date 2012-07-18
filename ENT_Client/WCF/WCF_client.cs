@@ -10,14 +10,14 @@ using ENT_Interface;
 
 namespace ENT_Client.WCF {
     class WCF_client {
+        public string name { get; private set; }
+        public int count { get; private set; }
         private void connect() {
             using (ChannelFactory<IENT> customersFactory =
                         new ChannelFactory<IENT>("ENT_Client")) {
                 IENT customersProxy = customersFactory.CreateChannel();
-                string name = customersProxy.GetRandomCustomerName();
-                int count = customersProxy.GetCustomersCount();
-                //Console.WriteLine(name);
-                //Console.WriteLine(count);
+                name = customersProxy.GetRandomCustomerName();
+                count = customersProxy.GetCustomersCount();
                 }
             }
         public WCF_client() {
