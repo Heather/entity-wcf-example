@@ -9,4 +9,4 @@ db
 TestResults
 
 #misc VS files
-.suo
+*.suo
