@@ -6,12 +6,14 @@ using System.Text;
 using System.ServiceModel;
 using System.ServiceModel.Description;
 
+using ENT_Interface;
+
 namespace ENT_Server.WCF {
     class WCF_base {
         public Uri baseAddress { get; private set; }
         private void createHost() {
             /// Create the ServiceHost.
-            using (ServiceHost host = new ServiceHost(typeof(ENT_Service), baseAddress)) {
+            using (ServiceHost host = new ServiceHost(typeof(ENT), baseAddress)) {
                 /// Enable metadata publishing.
                 ServiceMetadataBehavior smb = new ServiceMetadataBehavior();
                 smb.HttpGetEnabled = true;
