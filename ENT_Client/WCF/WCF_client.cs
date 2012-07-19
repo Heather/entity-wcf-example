@@ -42,9 +42,3 @@ namespace ENT_Client.WCF {
             }
         }
     }
-
-
-/*var query = 
-    from o in context.Orders.Expand("Order_Details")
-                  where o.Customer.CustomerID == customerId
-                  select o;*/
