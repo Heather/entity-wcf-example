@@ -11,11 +11,7 @@ using System.Text;
  * using System.ServiceModel.Description;
  * using ENT_Interface;
  */
-
 using System.Data.Services.Client;
-///<Note>
-/// Seems like I even don't need ENT_Interface as separate project with it :
-///</Note>
 using ENT_Client.ENT_Server;
 
 namespace ENT_Client.WCF {
