@@ -58,6 +58,7 @@ namespace ENT_Client {
                 int wk = 0;
                 for (DateTime date = Date_Start.Value; date <= Date_End.Value; date = date.AddDays(7)) {
                     dt.Columns.Add(new DataColumn(date.ToString("MMMM yyyy") + " Week:" + wk.ToString() ));
+                    wk++;
                     }
                 dt.Columns.Add(new DataColumn("total"));
                 foreach (ENT_Server.Customer c in cquery) {
