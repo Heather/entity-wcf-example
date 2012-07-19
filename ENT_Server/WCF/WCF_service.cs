@@ -6,7 +6,11 @@ using System.Text;
 using System.ServiceModel;
 using System.ServiceModel.Description;
 
-using ENT_Interface;
+///<Summary>
+/// Deprecated because of switching to WCF Data Service
+///</Summary>
+
+/*using ENT_Interface;
 
 namespace ENT_Server.WCF {
     public class ENT : IENT {
@@ -19,4 +23,4 @@ namespace ENT_Server.WCF {
             }
         #endregion
         }
-    }
+    }*/

@@ -17,7 +17,7 @@ using System.Runtime.Serialization;
 using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
-namespace ENT_Server.Entity
+namespace ENT_Interface.Entity
 {
     #region Contexts
     

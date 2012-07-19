@@ -41,6 +41,7 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,34 +51,27 @@
     <Reference Include="System.Data.Services.Client" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entity\ENT_DB.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ENT_DB.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WCF\ENT_Service.svc.cs">
       <DependentUpon>ENT_Service.svc</DependentUpon>
     </Compile>
-    <Compile Include="WCF\WCF_base.cs" />
-    <Compile Include="WCF\WCF_service.cs" />
+    <Compile Include="WCF\WCF_base.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <None Include="WCF\WCF_service.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="Entity\ENT_DB.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ENT_DB.Designer.cs</LastGenOutput>
-    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="WCF\ENT_Service.svc" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ENT_Interface\ENT_Interface.csproj">
       <Project>{271DC1F0-F903-45A9-B245-8F38596F6DA4}</Project>
       <Name>ENT_Interface</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="WCF\ENT_Service.svc" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

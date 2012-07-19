@@ -4,7 +4,10 @@ using System.Linq;
 using System.Text;
 using System.ServiceModel;
 
-namespace ENT_Interface {
+///<Summary>
+/// Deprecated because of switching to WCF Data Service
+///</Summary>
+/*namespace ENT_Interface {
     [ServiceContract]
     public interface IENT {
         [OperationContract]
@@ -12,4 +15,4 @@ namespace ENT_Interface {
         [OperationContract]
         int GetCustomersCount();
         }
-    }
+    }*/
