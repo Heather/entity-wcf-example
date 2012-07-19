@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="fa62f289-feed-4b3f-80bf-82747355761e" xmlns="urn:schemas-microsoft-com:xml-dataservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="459c9d27-2426-4ead-8633-5c512e77baf2" xmlns="urn:schemas-microsoft-com:xml-dataservicemap">
   <MetadataSources>
     <MetadataSource Address="http://localhost:8080/ENT_Server" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.edmx" MetadataType="Edmx" ID="e77294b6-cb7c-4ed1-a92d-d90dbd16e9c7" SourceId="1" SourceUrl="http://localhost:8080/ENT_Server" />
+    <MetadataFile FileName="service.edmx" MetadataType="Edmx" ID="3fc0329d-9521-46a2-8748-988815229326" SourceId="1" SourceUrl="http://localhost:8080/ENT_Server" />
   </Metadata>
   <Extensions />
   <Parameters>
     <Parameter Name="UseDataServiceCollection" Value="true" />
-    <Parameter Name="Version" Value="3.0" />
-    <Parameter Name="ClientAssemblyReference" Value="D:\Program Files\WCF Data Services Mar 2011 CTP2\bin\.NETFramework\Microsoft.Data.Services.Client.dll" />
+    <Parameter Name="Version" Value="2.0" />
   </Parameters>
 </ReferenceGroup>

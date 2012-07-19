@@ -11,6 +11,24 @@
         <Property Name="Id_good" Type="Edm.Int32" Nullable="false" />
         <Property Name="Id_cashheading" Type="Edm.Int32" Nullable="false" />
       </EntityType>
+      <EntityType Name="CashHeading">
+        <Key>
+          <PropertyRef Name="Id" />
+          <PropertyRef Name="Id_customer" />
+          <PropertyRef Name="Id_shop" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Id_customer" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Id_shop" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Date" Type="Edm.DateTime" Nullable="true" />
+      </EntityType>
+      <EntityType Name="Customer">
+        <Key>
+          <PropertyRef Name="Id" />
+        </Key>
+        <Property Name="Id" Type="Edm.Int32" Nullable="false" />
+        <Property Name="Name" Type="Edm.String" Nullable="true" MaxLength="100" Unicode="true" FixedLength="true" />
+      </EntityType>
       <EntityType Name="Good">
         <Key>
           <PropertyRef Name="Id" />
@@ -30,9 +48,11 @@
         <Property Name="Address" Type="Edm.String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
       </EntityType>
     </Schema>
-    <Schema Namespace="ENT_Interface.Entity" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+    <Schema Namespace="ENT_Server.Entity" xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
       <EntityContainer Name="ENTEntities" p7:LazyLoadingEnabled="true" m:IsDefaultEntityContainer="true" xmlns:p7="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
         <EntitySet Name="Cash" EntityType="ENTModel.Cash" />
+        <EntitySet Name="CashHeading" EntityType="ENTModel.CashHeading" />
+        <EntitySet Name="Customer" EntityType="ENTModel.Customer" />
         <EntitySet Name="Good" EntityType="ENTModel.Good" />
         <EntitySet Name="Shop" EntityType="ENTModel.Shop" />
       </EntityContainer>

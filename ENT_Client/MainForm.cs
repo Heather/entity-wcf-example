@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Linq;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,22 +15,80 @@ namespace ENT_Client {
         public MainForm() {
             InitializeComponent();
             }
-
         private void OK_Click(object sender, EventArgs e) {
-            //WCF_client wcf = new WCF_client();
-            ///<Summary>
-            /// Deprecated because of switching to WCF Data Service
-            ///</Summary>
-            /*
-             * MessageBox.Show(wcf.name + " " + wcf.count.ToString());
-             */
+            DataTable dt = new DataTable();
+            dt.Columns.Add(new DataColumn("Покупатель"));
+            var cquery = from c in Client.wcf.context.Customer select c;
+            var query = from gg in Client.wcf.context.Good
+                        from cc in Client.wcf.context.Customer
+                        from ch in Client.wcf.context.CashHeading
+                        from cs in Client.wcf.context.Cash
+                        where ch.Id_customer == cc.Id
+                        where cs.Id_cashheading == ch.Id
+                        where gg.Id == cs.Id_good
+                        select new CustomerOrderResult {
+                            CustomerID = cc.Id,
+                            Price = gg.Price.HasValue ? gg.Price.Value : 0,
+                            Date = ch.Date.HasValue ? ch.Date.Value : DateTime.Now
+                        };
+            if (Period_Month.Checked) {
+                for (DateTime date = Date_Start.Value; date <= Date_End.Value; date = date.AddMonths(1)) {
+                    dt.Columns.Add(new DataColumn(date.ToString("MMMM yyyy")));
+                    }
+                dt.Columns.Add(new DataColumn("итого"));
+                foreach (ENT_Server.Customer c in cquery) {
+                    DataRow customRow = dt.NewRow();
+                    customRow[0] = c.Name;
+                    int j = 0;
+                    double total = 0;
+                    for (DateTime date = Date_Start.Value; date <= Date_End.Value; date = date.AddMonths(1)) {
+                        double q = (from x in query
+                                    where x.CustomerID == c.Id
+                                    where x.Date > date && x.Date < date.AddMonths(1)
+                                    select x.Price).Average();
+                        customRow[j] = q;
+                        total += q;
+                        j++;
+                        }
+                    customRow[j] = total;
+                    dt.Rows.Add(customRow);
+                    }
+                }
+            else {
+                int wk = 0;
+                for (DateTime date = Date_Start.Value; date <= Date_End.Value; date = date.AddDays(7)) {
+                    dt.Columns.Add(new DataColumn(date.ToString("MMMM yyyy") + " Week:" + wk.ToString() ));
+                    }
+                dt.Columns.Add(new DataColumn("итого"));
+                foreach (ENT_Server.Customer c in cquery) {
+                    DataRow customRow = dt.NewRow();
+                    customRow[0] = c.Name;
+                    int j = 0;
+                    double total = 0;
+                    for (DateTime date = Date_Start.Value; date <= Date_End.Value; date = date.AddDays(7)) {
+                        double q = (from x in query
+                                    where x.CustomerID == c.Id
+                                    where x.Date > date && x.Date < date.AddMonths(1)
+                                    select x.Price).Average();
+                        customRow[j] = q;
+                        total += q;
+                        j++;
+                        }
+                    customRow[j] = total;
+                    dt.Rows.Add(customRow);
+                    }
+                }
+                MainGreed.DataSource = dt;
             }
-
         ///<Summary>
-        /// Preload all the things
+        /// Fill all the things
         ///</Summary>
         private void MainForm_Load(object sender, EventArgs e) {
             Client.wcf = new WCF_client();
+            var query = from s in Client.wcf.context.Shop select s;
+            foreach (ENT_Server.Shop shop in query) {
+                Shop.Items.Add(new ComboboxItem(shop.Shop1, shop.Id));
+                }
             }
         }
     }

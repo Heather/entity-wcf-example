@@ -16,7 +16,7 @@ using ENT_Client.ENT_Server;
 
 namespace ENT_Client.WCF {
     class WCF_client {
-        private ENTEntities context;
+        public ENTEntities context;
         private Uri baseAddress = new Uri("http://localhost:8080/ENT_Server");
         ///<Summary>
         /// Deprecated because of switching to WCF Data Service
@@ -36,13 +36,15 @@ namespace ENT_Client.WCF {
                 count = customersProxy.GetCustomersCount();
                 }*/
             context = new ENTEntities(baseAddress);
-            /*var query = 
-                from o in context.Orders.Expand("Order_Details")
-                              where o.Customer.CustomerID == customerId
-                              select o;*/
             }
         public WCF_client() {
             connect();
             }
         }
     }
+
+
+/*var query = 
+    from o in context.Orders.Expand("Order_Details")
+                  where o.Customer.CustomerID == customerId
+                  select o;*/

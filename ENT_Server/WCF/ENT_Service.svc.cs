@@ -11,14 +11,17 @@ using ENT_Server.Entity;
 namespace ENT_Server.WCF {
     public class ENT_Service : DataService<ENTEntities> {
         public static void InitializeService(DataServiceConfiguration config) {
-            config.SetEntitySetAccessRule("Good", EntitySetRights.AllRead
-                 | EntitySetRights.WriteMerge
-                 | EntitySetRights.WriteReplace);
-            config.SetEntitySetAccessRule("Shop", EntitySetRights.AllRead
-                | EntitySetRights.AllWrite);
+            config.SetEntitySetAccessRule("Good", EntitySetRights.AllRead);
+            config.SetEntitySetAccessRule("Shop", EntitySetRights.AllRead);
             config.SetEntitySetAccessRule("Cash", EntitySetRights.AllRead);
-
+            config.SetEntitySetAccessRule("CashHeading", EntitySetRights.AllRead);
+            config.SetEntitySetAccessRule("Customer", EntitySetRights.AllRead);
             config.DataServiceBehavior.MaxProtocolVersion = DataServiceProtocolVersion.V2;
             }
         }
     }
+/*
+ * | EntitySetRights.WriteMerge
+ * | EntitySetRights.WriteReplace
+ * | EntitySetRights.AllWrite
+*/

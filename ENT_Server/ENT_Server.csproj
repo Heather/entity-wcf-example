@@ -68,7 +68,6 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ENT_DB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="WCF\WCF_service.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

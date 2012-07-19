@@ -5,13 +5,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ENT_Server", "ENT_Server\EN
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ENT_Client", "ENT_Client\ENT_Client.csproj", "{A0D7059B-A5CB-4CEE-AAB0-2C50E158815B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CE232FD3-49C5-404B-8FCA-9817B5BA1FEB}"
-	ProjectSection(SolutionItems) = preProject
-		ENT.vsmdi = ENT.vsmdi
-		Local.testsettings = Local.testsettings
-		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = ENT.vsmdi
