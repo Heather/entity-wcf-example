@@ -16,13 +16,20 @@ namespace ENT_Client {
             }
 
         private void OK_Click(object sender, EventArgs e) {
-            WCF_client wcf = new WCF_client();
+            //WCF_client wcf = new WCF_client();
             ///<Summary>
             /// Deprecated because of switching to WCF Data Service
             ///</Summary>
             /*
              * MessageBox.Show(wcf.name + " " + wcf.count.ToString());
              */
+            }
+
+        ///<Summary>
+        /// Preload all the things
+        ///</Summary>
+        private void MainForm_Load(object sender, EventArgs e) {
+            Client.wcf = new WCF_client();
             }
         }
     }
