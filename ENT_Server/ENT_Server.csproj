@@ -51,6 +51,11 @@
     <Reference Include="System.Data.Services.Client" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entity\ENT_DB.Designer.cs">
+      <DependentUpon>ENT_DB.edmx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WCF\ENT_Service.svc.cs">
@@ -59,6 +64,10 @@
     <Compile Include="WCF\WCF_base.cs">
       <SubType>Code</SubType>
     </Compile>
+    <EntityDeploy Include="Entity\ENT_DB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ENT_DB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
     <None Include="WCF\WCF_service.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -66,12 +75,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="WCF\ENT_Service.svc" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ENT_Interface\ENT_Interface.csproj">
-      <Project>{271DC1F0-F903-45A9-B245-8F38596F6DA4}</Project>
-      <Name>ENT_Interface</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

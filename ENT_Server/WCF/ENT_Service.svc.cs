@@ -6,7 +6,7 @@ using System.Web;
 using System.Data.Services;
 using System.Data.Services.Common;
 
-using ENT_Interface.Entity;
+using ENT_Server.Entity;
 
 namespace ENT_Server.WCF {
     public class ENT_Service : DataService<ENTEntities> {

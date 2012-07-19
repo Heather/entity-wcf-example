@@ -24,11 +24,13 @@
         /// </summary>
         private void InitializeComponent() {
             this.OK = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // OK
             // 
-            this.OK.Location = new System.Drawing.Point(343, 284);
+            this.OK.Location = new System.Drawing.Point(456, 353);
             this.OK.Name = "OK";
             this.OK.Size = new System.Drawing.Size(75, 23);
             this.OK.TabIndex = 0;
@@ -36,14 +38,24 @@
             this.OK.UseVisualStyleBackColor = true;
             this.OK.Click += new System.EventHandler(this.OK_Click);
             // 
-            // Form1
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(43, 31);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(387, 223);
+            this.dataGridView1.TabIndex = 1;
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(430, 319);
+            this.ClientSize = new System.Drawing.Size(543, 388);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.OK);
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
             }
@@ -51,6 +63,7 @@
         #endregion
 
         private System.Windows.Forms.Button OK;
+        private System.Windows.Forms.DataGridView dataGridView1;
         }
     }
 

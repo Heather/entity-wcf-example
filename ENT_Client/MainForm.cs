@@ -16,9 +16,13 @@ namespace ENT_Client {
             }
 
         private void OK_Click(object sender, EventArgs e) {
-            ///Test WCF Service
             WCF_client wcf = new WCF_client();
-            MessageBox.Show(wcf.name + " " + wcf.count.ToString());
+            ///<Summary>
+            /// Deprecated because of switching to WCF Data Service
+            ///</Summary>
+            /*
+             * MessageBox.Show(wcf.name + " " + wcf.count.ToString());
+             */
             }
         }
     }
