@@ -17,7 +17,7 @@ namespace ENT_Client {
             }
         private void OK_Click(object sender, EventArgs e) {
             DataTable dt = new DataTable();
-            dt.Columns.Add(new DataColumn("Покупатель"));
+            dt.Columns.Add(new DataColumn("Customer"));
             var cquery = from c in Client.wcf.context.Customer select c;
             var query = from gg in Client.wcf.context.Good
                         from cc in Client.wcf.context.Customer
@@ -35,7 +35,7 @@ namespace ENT_Client {
                 for (DateTime date = Date_Start.Value; date <= Date_End.Value; date = date.AddMonths(1)) {
                     dt.Columns.Add(new DataColumn(date.ToString("MMMM yyyy")));
                     }
-                dt.Columns.Add(new DataColumn("итого"));
+                dt.Columns.Add(new DataColumn("total"));
                 foreach (ENT_Server.Customer c in cquery) {
                     DataRow customRow = dt.NewRow();
                     customRow[0] = c.Name;
@@ -59,7 +59,7 @@ namespace ENT_Client {
                 for (DateTime date = Date_Start.Value; date <= Date_End.Value; date = date.AddDays(7)) {
                     dt.Columns.Add(new DataColumn(date.ToString("MMMM yyyy") + " Week:" + wk.ToString() ));
                     }
-                dt.Columns.Add(new DataColumn("итого"));
+                dt.Columns.Add(new DataColumn("total"));
                 foreach (ENT_Server.Customer c in cquery) {
                     DataRow customRow = dt.NewRow();
                     customRow[0] = c.Name;
