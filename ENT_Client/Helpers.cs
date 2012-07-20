@@ -17,8 +17,8 @@ namespace ENT_Client {
         }
     }
 
-public class CustomerOrderResult {
+/*public class CustomerOrderResult {
     public int CustomerID { get; set; }
     public int Price { get; set; }
     public DateTime Date { get; set; }
-    }
+    }*/

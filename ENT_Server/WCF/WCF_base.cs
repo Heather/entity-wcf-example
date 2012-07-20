@@ -3,15 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-///<Summary>
-/// Deprecated because of switching to WCF Data Service
-///</Summary>
-/*
- * using System.ServiceModel;
- * using System.ServiceModel.Description;
- * using ENT_Interface;
- */
-
 using System.Data.Services;
 using System.Data.Services.Common;
 
@@ -20,20 +11,7 @@ namespace ENT_Server.WCF {
         private Uri baseAddress;
         private Uri[] addressList;
         private void createHost() {
-            /// Create the ServiceHost.
-            /*using (ServiceHost host = new ServiceHost(typeof(ENT), baseAddress)) {
-                /// Enable metadata publishing.
-                ServiceMetadataBehavior smb = new ServiceMetadataBehavior();
-                smb.HttpGetEnabled = true;
-                smb.MetadataExporter.PolicyVersion = PolicyVersion.Policy15;
-                host.Description.Behaviors.Add(smb);*/
             using (DataServiceHost host = new DataServiceHost(typeof(ENT_Service), addressList)) {
-                ///<Summary>
-                /// Open the ServiceHost to start listening for messages. Since
-                /// no endpoints are explicitly configured, the runtime will create
-                /// one endpoint per base address for each service contract implemented
-                /// by the service.
-                ///</Summary>
                 host.Open();
                 Console.WriteLine("The service is ready at {0}", baseAddress);
                 Console.WriteLine("Press <Enter> to stop the service.");
@@ -49,21 +27,3 @@ namespace ENT_Server.WCF {
             }
         }
     }
-
-
-///<Summary>
-/// Deprecated because of switching to WCF Data Service
-///</Summary>
-/*using ENT_Interface;
-namespace ENT_Server.WCF {
-    public class ENT : IENT {
-        #region IENT Members
-        public string GetRandomCustomerName() {
-            return "Random Name";
-            }
-        public int GetCustomersCount() {
-            return 100;
-            }
-        #endregion
-        }
-    }*/

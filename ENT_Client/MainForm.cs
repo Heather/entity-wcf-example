@@ -19,43 +19,49 @@ namespace ENT_Client {
             DataTable dt = new DataTable();
             dt.Columns.Add(new DataColumn("Customer"));
             var cquery = from c in Client.wcf.context.Customer select c;
-            var query = from gg in Client.wcf.context.Good
-                        from cc in Client.wcf.context.Customer
+            int customern = 0;
+            var query = //from cc in Client.wcf.context.Customer
                         from ch in Client.wcf.context.CashHeading
+                        where ch.Id_customer == customern//cc.Id
                         from cs in Client.wcf.context.Cash
-                        where ch.Id_customer == cc.Id
                         where cs.Id_cashheading == ch.Id
                         where Shop.SelectedIndex == 0
                             || ch.Id_shop == (int)Shop.SelectedValue
+                        from gg in Client.wcf.context.Good
                         where gg.Id == cs.Id_good
-                        select new CustomerOrderResult {
-                            CustomerID = cc.Id,
+                        select new {
+                            gg.Price,
+                            ch.Date
+                        };
+                        /*new CustomerOrderResult {
+                            CustomerID = customern,//cc.Id,
                             Price = gg.Price.HasValue ? gg.Price.Value : 0,
                             Date = ch.Date.HasValue ? ch.Date.Value : DateTime.Now
-                        };
+                        };*/
             if (Period_Month.Checked) {
                 for (DateTime date = Date_Start.Value; date <= Date_End.Value; date = date.AddMonths(1)) {
                     dt.Columns.Add(new DataColumn(date.ToString("MMMM yyyy")));
                     }
                 dt.Columns.Add(new DataColumn("total"));
-                foreach (ENT_Server.Customer c in cquery) { //.ToList<ENT_Server.Customer>()
+                foreach (ENT_Server.Customer c in cquery) {
+                    customern = c.Id;
                     DataRow customRow = dt.NewRow();
                     customRow[0] = c.Name;
                     int j = 0;
                     double total = 0;
                     for (DateTime date = Date_Start.Value; date <= Date_End.Value; date = date.AddMonths(1)) {
-                        var q = (from x in query
-                                            where x.CustomerID == c.Id
-                                            where x.Date > date && x.Date < date.AddMonths(1)
-                                            select x.Price);
+                        var q = from x in query
+                                where x != null && c!= null
+                                //where x.CustomerID == c.Id
+                                where x.Date > date && x.Date < date.AddMonths(1)
+                                select (x.Price.HasValue? x.Price.Value : 0);
                         try {
                             j++;
-                            List<int> qq = q.ToList();
-                            double val = (qq.Count == 0) ? 0.0 : qq.Average();
+                            double val = (q.Count() == 0) ? 0.0 : q.Average(qi => qi);
                             customRow[j] = val;
                             total += val;
-                            } catch (Exception) {
-                            //continue;
+                        } catch (Exception) {
+                            ; //TODO: (Error translating Linq expression to URI: Can only specify query options (orderby, where, take, skip) 
                             }
                         }
                     customRow[j+1] = total;
@@ -70,23 +76,23 @@ namespace ENT_Client {
                     }
                 dt.Columns.Add(new DataColumn("total"));
                 foreach (ENT_Server.Customer c in cquery) {
+                    customern = c.Id;
                     DataRow customRow = dt.NewRow();
                     customRow[0] = c.Name;
                     int j = 0;
                     double total = 0;
                     for (DateTime date = Date_Start.Value; date <= Date_End.Value; date = date.AddDays(7)) {
                         var q = from x in query
-                                    where x.CustomerID == c.Id
+                                    //where x.CustomerID == c.Id
                                     where x.Date > date && x.Date < date.AddMonths(1)
-                                    select x.Price;
+                                select (x.Price.HasValue ? x.Price.Value : 0);
                         try {
                             j++;
-                            List<int> qq = q.ToList();
-                            double val = (qq.Count == 0) ? 0.0 : qq.Average();
+                            double val = (q.Count() == 0) ? 0.0 : q.Average(qi => qi);
                             customRow[j] = val;
                             total += val;
-                            } catch (Exception) {
-                            //continue;
+                        } catch (Exception) {
+                            ; //TODO: (Error translating Linq expression to URI: Can only specify query options (orderby, where, take, skip) 
                             }
                         }
                     customRow[j+1] = total;
