@@ -25,6 +25,8 @@ namespace ENT_Client {
                         from cs in Client.wcf.context.Cash
                         where ch.Id_customer == cc.Id
                         where cs.Id_cashheading == ch.Id
+                        where Shop.SelectedIndex == 0
+                            || ch.Id_shop == (int)Shop.SelectedValue
                         where gg.Id == cs.Id_good
                         select new CustomerOrderResult {
                             CustomerID = cc.Id,
@@ -36,21 +38,27 @@ namespace ENT_Client {
                     dt.Columns.Add(new DataColumn(date.ToString("MMMM yyyy")));
                     }
                 dt.Columns.Add(new DataColumn("total"));
-                foreach (ENT_Server.Customer c in cquery) {
+                foreach (ENT_Server.Customer c in cquery) { //.ToList<ENT_Server.Customer>()
                     DataRow customRow = dt.NewRow();
                     customRow[0] = c.Name;
                     int j = 0;
                     double total = 0;
                     for (DateTime date = Date_Start.Value; date <= Date_End.Value; date = date.AddMonths(1)) {
-                        double q = (from x in query
-                                    where x.CustomerID == c.Id
-                                    where x.Date > date && x.Date < date.AddMonths(1)
-                                    select x.Price).Average();
-                        customRow[j] = q;
-                        total += q;
-                        j++;
+                        var q = (from x in query
+                                            where x.CustomerID == c.Id
+                                            where x.Date > date && x.Date < date.AddMonths(1)
+                                            select x.Price);
+                        try {
+                            j++;
+                            List<int> qq = q.ToList();
+                            double val = (qq.Count == 0) ? 0.0 : qq.Average();
+                            customRow[j] = val;
+                            total += val;
+                            } catch (Exception) {
+                            //continue;
+                            }
                         }
-                    customRow[j] = total;
+                    customRow[j+1] = total;
                     dt.Rows.Add(customRow);
                     }
                 }
@@ -67,15 +75,21 @@ namespace ENT_Client {
                     int j = 0;
                     double total = 0;
                     for (DateTime date = Date_Start.Value; date <= Date_End.Value; date = date.AddDays(7)) {
-                        double q = (from x in query
+                        var q = from x in query
                                     where x.CustomerID == c.Id
                                     where x.Date > date && x.Date < date.AddMonths(1)
-                                    select x.Price).Average();
-                        customRow[j] = q;
-                        total += q;
-                        j++;
+                                    select x.Price;
+                        try {
+                            j++;
+                            List<int> qq = q.ToList();
+                            double val = (qq.Count == 0) ? 0.0 : qq.Average();
+                            customRow[j] = val;
+                            total += val;
+                            } catch (Exception) {
+                            //continue;
+                            }
                         }
-                    customRow[j] = total;
+                    customRow[j+1] = total;
                     dt.Rows.Add(customRow);
                     }
                 }
@@ -86,10 +100,14 @@ namespace ENT_Client {
         ///</Summary>
         private void MainForm_Load(object sender, EventArgs e) {
             Client.wcf = new WCF_client();
+            Shop.Items.Add(new ComboboxItem("All", 0));
+            Shop.SelectedIndex = 0;
             var query = from s in Client.wcf.context.Shop select s;
             foreach (ENT_Server.Shop shop in query) {
                 Shop.Items.Add(new ComboboxItem(shop.Shop1, shop.Id));
                 }
+            Date_Start.Value = System.DateTime.Now.AddMonths(-5);
+            Period_Month.Checked = true;
             }
         }
     }

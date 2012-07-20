@@ -26,15 +26,15 @@
             this.OK = new System.Windows.Forms.Button();
             this.MainGreed = new System.Windows.Forms.DataGridView();
             this.ParamBox = new System.Windows.Forms.GroupBox();
-            this.Date_Start = new System.Windows.Forms.DateTimePicker();
-            this.Date_End = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.Shop = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.Period_Week = new System.Windows.Forms.RadioButton();
             this.Period_Month = new System.Windows.Forms.RadioButton();
+            this.Period_Week = new System.Windows.Forms.RadioButton();
+            this.label3 = new System.Windows.Forms.Label();
+            this.Shop = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.Date_End = new System.Windows.Forms.DateTimePicker();
+            this.Date_Start = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.MainGreed)).BeginInit();
             this.ParamBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -74,55 +74,6 @@
             this.ParamBox.TabStop = false;
             this.ParamBox.Text = "Input Data";
             // 
-            // Date_Start
-            // 
-            this.Date_Start.Location = new System.Drawing.Point(107, 19);
-            this.Date_Start.Name = "Date_Start";
-            this.Date_Start.Size = new System.Drawing.Size(200, 20);
-            this.Date_Start.TabIndex = 0;
-            // 
-            // Date_End
-            // 
-            this.Date_End.Location = new System.Drawing.Point(457, 19);
-            this.Date_End.Name = "Date_End";
-            this.Date_End.Size = new System.Drawing.Size(200, 20);
-            this.Date_End.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Start Date:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(366, 25);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "End Date:";
-            // 
-            // Shop
-            // 
-            this.Shop.FormattingEnabled = true;
-            this.Shop.Location = new System.Drawing.Point(107, 95);
-            this.Shop.Name = "Shop";
-            this.Shop.Size = new System.Drawing.Size(200, 21);
-            this.Shop.TabIndex = 4;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(26, 98);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Shop :";
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.Period_Month);
@@ -134,10 +85,21 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Period Box";
             // 
+            // Period_Month
+            // 
+            this.Period_Month.AutoSize = true;
+            this.Period_Month.Location = new System.Drawing.Point(88, 16);
+            this.Period_Month.Name = "Period_Month";
+            this.Period_Month.Size = new System.Drawing.Size(108, 17);
+            this.Period_Month.TabIndex = 1;
+            this.Period_Month.TabStop = true;
+            this.Period_Month.Text = "Use month period";
+            this.Period_Month.UseVisualStyleBackColor = true;
+            // 
             // Period_Week
             // 
             this.Period_Week.AutoSize = true;
-            this.Period_Week.Location = new System.Drawing.Point(88, 19);
+            this.Period_Week.Location = new System.Drawing.Point(88, 39);
             this.Period_Week.Name = "Period_Week";
             this.Period_Week.Size = new System.Drawing.Size(105, 17);
             this.Period_Week.TabIndex = 0;
@@ -145,16 +107,54 @@
             this.Period_Week.Text = "Use week period";
             this.Period_Week.UseVisualStyleBackColor = true;
             // 
-            // Period_Month
+            // label3
             // 
-            this.Period_Month.AutoSize = true;
-            this.Period_Month.Location = new System.Drawing.Point(88, 42);
-            this.Period_Month.Name = "Period_Month";
-            this.Period_Month.Size = new System.Drawing.Size(108, 17);
-            this.Period_Month.TabIndex = 1;
-            this.Period_Month.TabStop = true;
-            this.Period_Month.Text = "Use month period";
-            this.Period_Month.UseVisualStyleBackColor = true;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(26, 98);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(38, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Shop :";
+            // 
+            // Shop
+            // 
+            this.Shop.FormattingEnabled = true;
+            this.Shop.Location = new System.Drawing.Point(107, 95);
+            this.Shop.Name = "Shop";
+            this.Shop.Size = new System.Drawing.Size(200, 21);
+            this.Shop.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(366, 25);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(55, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "End Date:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(26, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(58, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Start Date:";
+            // 
+            // Date_End
+            // 
+            this.Date_End.Location = new System.Drawing.Point(457, 19);
+            this.Date_End.Name = "Date_End";
+            this.Date_End.Size = new System.Drawing.Size(200, 20);
+            this.Date_End.TabIndex = 1;
+            // 
+            // Date_Start
+            // 
+            this.Date_Start.Location = new System.Drawing.Point(107, 19);
+            this.Date_Start.Name = "Date_Start";
+            this.Date_Start.Size = new System.Drawing.Size(200, 20);
+            this.Date_Start.TabIndex = 0;
             // 
             // MainForm
             // 
